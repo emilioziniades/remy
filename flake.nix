@@ -17,8 +17,8 @@
     devShells = forAllSystems (system: pkgs: {
       default = pkgs.mkShell {
         buildInputs = with pkgs; [
-          # put your packages here!
-          curl
+          cargo-leptos
+          cargo-generate
         ];
       };
     });
