@@ -17,8 +17,15 @@
     devShells = forAllSystems (system: pkgs: {
       default = pkgs.mkShell {
         buildInputs = with pkgs; [
+          rustc
+          cargo
           cargo-leptos
           cargo-generate
+
+          dart-sass
+
+          # wasm tools seem to require LLD. See here: https://nixos.wiki/wiki/Rust#Using_LLD_instead_of_LD
+          llvmPackages.bintools
         ];
       };
     });
