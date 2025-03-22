@@ -9,6 +9,7 @@
     "format": "prettier --write \"./**/*.{ts,tsx,css,json}\""
   },
   "dependencies": {
+    "@picocss/pico": "^2.1.1",
     "@solidjs/meta": "^0.29.4",
     "@solidjs/router": "^0.15.0",
     "@solidjs/start": "^1.1.0",
@@ -19,6 +20,7 @@
     "node": ">=22"
   },
   "devDependencies": {
-    "prettier": "^3.5.3"
+    "prettier": "^3.5.3",
+    "sass-embedded": "^1.86.0"
   }
 }
