@@ -1,3 +1,4 @@
+use askama::Template;
 use axum::{Router, response::Html, routing::get};
 
 #[tokio::main]
@@ -13,6 +14,14 @@ async fn main() {
     axum::serve(listener, app).await.unwrap();
 }
 
-async fn handler() -> Html<&'static str> {
-    Html("<h1>Hello, World!</h1>")
+async fn handler() -> Html<String> {
+    let hello = Hello { name: "world" };
+    Html(hello.render().unwrap())
+}
+
+#[derive(Template)]
+#[template(path = "hello.html")]
+#[allow(dead_code)]
+struct Hello<'a> {
+    name: &'a str,
 }
