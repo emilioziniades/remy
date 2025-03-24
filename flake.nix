@@ -17,6 +17,12 @@
         buildInputs = with pkgs; [
           nodejs_22
           nodePackages.prettier
+
+          cargo
+          rustc
+          rustfmt
+          rust-analyzer
+          clippy
         ];
       };
     });
