@@ -8,7 +8,7 @@ export default function Home() {
   return (
     <main>
       <Title>Recipes</Title>
-      <h1>Recipes</h1>
+      <h2>Recipes</h2>
       <table>
         <For each={recipes()}>
           {(recipe) => (

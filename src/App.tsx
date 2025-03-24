@@ -15,7 +15,9 @@ export default function App() {
               <ul>
                 <li>
                   <strong>
-                    <a href="/">Remy</a>
+                    <a href="/">
+                      <h1>Remy</h1>
+                    </a>
                   </strong>
                 </li>
               </ul>

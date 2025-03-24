@@ -11,7 +11,7 @@ export default function RecipePage() {
   return (
     <main>
       <Title>{recipeName}</Title>
-      <h1>{recipeName}</h1>
+      <h2>{recipeName}</h2>
       <ErrorBoundary
         fallback={(error, _reset) => (
           <div>
