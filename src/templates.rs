@@ -1,8 +1,6 @@
 use askama::Template;
 use cooklang::Content;
 use cooklang::Item;
-// use cooklang::Content::Step;
-// use cooklang::Content::Text;
 
 #[derive(Template)]
 #[template(path = "index.html")]

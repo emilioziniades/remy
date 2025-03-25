@@ -68,8 +68,6 @@ async fn recipe(Path(recipe_id): Path<String>, State(config): State<Config>) -> 
     // TODO: rather create one parser on boot-up and re-use it
     let parsed_recipe = cooklang::parse(&raw_recipe).unwrap_output();
 
-    let debug_recipe = format!("{parsed_recipe:?}");
-
     println!("{parsed_recipe:#?}");
 
     Html(

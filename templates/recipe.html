@@ -1,36 +1,48 @@
 {% extends "base.html" %}
 
-{% block title %}{{ name }}{% endblock %}
+{% block title %}
+  {{ name }}
+{% endblock title %}
+
 {% block content %}
   <h2>{{ name }}</h2>
   {% for section in recipe.sections %}
     {% match section.name %}
       {% when Some with (name) %}
         <h3>{{ name }}</h3>
-        {% when None %}
-          No section name
-        {% endmatch %}
-        {% for step in section.content %}
-          {% match step %}
-            {% when Content::Text with (text) %}
-              <p>{{ text }}</p>
-              {% when Content::Step with (inner_step) %}
-                <b>{{ inner_step.number }}</b>
-                {% for step_item in inner_step.items %}
-                  {% match step_item %}
-                    {% when Item::Text with {value: text} %}
-                      <p>{{ text }}</p>
-                      {% when Item::Ingredient with {index: ingredient_index} %}
-                        <p>Ingredient lives at index {{ ingredient_index }}</p>
-                        {% when Item::Cookware with {index: cookware_index} %}
-                          <p>Cookware lives at index {{ cookware_index }}</p>
-                          {% when Item::Timer with {index: timer_index} %}
-                            <p>Timer lives at index {{ timer_index }}</p>
-                            {% when Item::InlineQuantity with {index: quantity_index } %}
-                              <p>Inline quantity lives at index {{ quantity_index }}</p>
-                            {% endmatch %}
-                          {% endfor %}
-                        {% endmatch %}
-                      {% endfor %}
-                    {% endfor %}
-                  {% endblock %}
+      {% endwhen %}
+      {% when None %}
+        No section name
+      {% endwhen %}
+    {% endmatch %}
+    {% for step in section.content %}
+      {% match step %}
+        {% when Content::Text with (text) %}
+          <p>{{ text }}</p>
+        {% endwhen %}
+        {% when Content::Step with (inner_step) %}
+          <b>{{ inner_step.number }}</b>
+          {% for step_item in inner_step.items %}
+            {% match step_item %}
+              {% when Item::Text with {value: text} %}
+                <p>{{ text }}</p>
+              {% endwhen %}
+              {% when Item::Ingredient with {index: ingredient_index} %}
+                <p>Ingredient lives at index {{ ingredient_index }}</p>
+              {% endwhen %}
+              {% when Item::Cookware with {index: cookware_index} %}
+                <p>Cookware lives at index {{ cookware_index }}</p>
+              {% endwhen %}
+              {% when Item::Timer with {index: timer_index} %}
+                <p>Timer lives at index {{ timer_index }}</p>
+              {% endwhen %}
+              {% when Item::InlineQuantity with {index: quantity_index } %}
+                <p>Inline quantity lives at index {{ quantity_index }}</p>
+              {% endwhen %}
+            {% endmatch %}
+          {% endfor %}
+        {% endwhen %}
+      {% endmatch %}
+    {% endfor %}
+  {% endfor %}
+{% endblock content %}

@@ -4,7 +4,7 @@ version = "0.1.0"
 edition = "2024"
 
 [dependencies]
-askama = "0.12.1"
+askama = "0.13.0-pre.0"
 axum = "0.8.1"
 clap = { version = "4.5.32", features = ["derive"] }
 cooklang = "0.15.0"
