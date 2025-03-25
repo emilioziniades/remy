@@ -6,4 +6,7 @@ edition = "2024"
 [dependencies]
 askama = "0.12.1"
 axum = "0.8.1"
+clap = { version = "4.5.32", features = ["derive"] }
+cooklang = "0.15.0"
 tokio = { version = "1.44.1", features = ["full"] }
+walkdir = "2.5.0"
