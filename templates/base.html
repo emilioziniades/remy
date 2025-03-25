@@ -2,10 +2,13 @@
 <html lang="en">
   <head>
     <title>
+
       {% block title %}{{ title }} - Remy{% endblock %}
     </title>
+    <!-- TODO: install this with a package.json instead of CDNs -->
     <link rel="stylesheet"
           href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
+
     {% block head %}{% endblock %}
   </head>
   <body>
@@ -15,13 +18,14 @@
           <li>
             <strong>
               <a href="/">
-                <h1>Remy</h1>
+                <h1>remy</h1>
               </a>
             </strong>
           </li>
         </ul>
       </nav>
       <main>
+
         {% block content %}<p>Placeholder content</p>{% endblock %}
       </main>
     </div>
