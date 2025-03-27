@@ -15,9 +15,6 @@
     devShells = forAllSystems (system: pkgs: {
       default = pkgs.mkShell {
         buildInputs = with pkgs; [
-          nodejs_22
-          nodePackages.prettier
-
           cargo
           rustc
           rustfmt
