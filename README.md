@@ -1,7 +1,7 @@
 # Remy
 
 A small website that displays [Cooklang](https://cooklang.org/) recipes and generates shopping lists.
-It is an alternative to `cook server` provided by [`cook-cli`](https://github.com/cooklang/cookcli).
+It is an alternative to the `cook server` subcommand of the [`cook` CLI tool](https://github.com/cooklang/cookcli).
 
 ## Features
 
