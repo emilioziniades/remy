@@ -15,7 +15,7 @@ pub struct RecipeInfo {
 }
 
 #[derive(Template)]
-#[template(path = "recipe.html")]
+#[template(path = "recipe.html", whitespace = "suppress")]
 pub struct Recipe {
     pub name: String,
     pub recipe: cooklang::ScalableRecipe,

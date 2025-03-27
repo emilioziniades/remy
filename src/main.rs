@@ -41,7 +41,9 @@ async fn main() {
     let app = Router::new()
         .route("/", get(index))
         .route("/recipe/{recipe_id}", get(recipe))
-        .with_state(state);
+        .with_state(state)
+        // TODO: the static directory should come from config
+        .fallback_service(tower_http::services::ServeDir::new("public"));
 
     // run it
     let listener = tokio::net::TcpListener::bind("127.0.0.1:3000")

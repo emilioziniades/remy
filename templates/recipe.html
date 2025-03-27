@@ -14,7 +14,7 @@
       {% when None %}
       {% endwhen %}
     {% endmatch %}
-    {% for step in section.content %}
+    {% for step in section.content +%}
       <p>
         {% match step %}
           {% when Content::Text with (text) %}
@@ -29,16 +29,39 @@
                 {% endwhen %}
                 {% when Item::Ingredient with {index: ingredient_index} %}
                   {% let ingredient = recipe.ingredients[ingredient_index | deref ] %}
-                  {{ ingredient.name }}
+                  <span class="ingredient"
+                        {% match ingredient.quantity %}
+                        {% when Some with (quantity) %}
+                        data-tooltip="{{ quantity }}"
+                        {% endwhen %}
+                        {% when None %}
+                        {% endwhen %}
+                        {% endmatch %}>{{ ingredient.name }}</span>
                 {% endwhen %}
                 {% when Item::Cookware with {index: cookware_index} %}
-                  <i>Cookware lives at index {{ cookware_index }}</i>
+                  {% let cookware = recipe.cookware[cookware_index | deref ] %}
+                  <span class="cookware">{{ cookware.name }}</span>
                 {% endwhen %}
                 {% when Item::Timer with {index: timer_index} %}
-                  <p>Timer lives at index {{ timer_index }}</p>
+                  {% let timer = recipe.timers[timer_index | deref ] %}
+                  {% match timer.name %}
+                    {% when Some with (timer_name) %}
+                      <span class="timer">{{ timer_name }}</span>
+                    {% endwhen %}
+                    {% when None %}
+                    {% endwhen %}
+                  {% endmatch %}
+                  {% match timer.quantity %}
+                    {% when Some with (timer_quantity) %}
+                      <span class="timer">{{ timer_quantity }}</span>
+                    {% endwhen %}
+                    {% when None %}
+                    {% endwhen %}
+                  {% endmatch %}
                 {% endwhen %}
                 {% when Item::InlineQuantity with {index: quantity_index } %}
-                  <p>Inline quantity lives at index {{ quantity_index }}</p>
+                  {% let inline_quantity = recipe.inline_quantities[quantity_index | deref ] %}
+                  <span class="inline-quantity">{{ inline_quantity }}</span>
                 {% endwhen %}
               {% endmatch %}
             {% endfor %}
