@@ -6,6 +6,7 @@
       {% block title %}{{ title }} - Remy{% endblock %}
     </title>
     <link rel="stylesheet" href="/index.css">
+    <script src="/index.js"></script>
     <!-- TODO: install this with a package.json instead of CDNs -->
     <link rel="stylesheet"
           href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
@@ -22,6 +23,13 @@
                 <h1>remy</h1>
               </a>
             </strong>
+          </li>
+        </ul>
+        <ul>
+          <li>
+            <button id="dark-mode-toggle">
+              <div id="dark-mode-toggle-icon" />
+            </button>
           </li>
         </ul>
       </nav>

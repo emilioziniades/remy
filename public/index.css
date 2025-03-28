@@ -12,3 +12,38 @@
 
 .inline-quantity {
 }
+
+#dark-mode-toggle {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  box-shadow: none;
+}
+
+#dark-mode-toggle-icon {
+  background: url("/moon-line.svg");
+  width: 30px;
+  height: 30px;
+  transition: all 0.3s ease-in-out;
+}
+
+@media (prefers-color-scheme: dark) {
+  #dark-mode-toggle-icon {
+    background: url("/sun-line.svg");
+    filter: invert(1);
+  }
+}
+
+[data-theme="light"] {
+  #dark-mode-toggle-icon {
+    background: url("/moon-line.svg");
+    filter: invert(0);
+  }
+}
+
+[data-theme="dark"] {
+  #dark-mode-toggle-icon {
+    background: url("/sun-line.svg");
+    filter: invert(1);
+  }
+}
