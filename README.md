@@ -6,6 +6,7 @@ It is an alternative to the `cook server` subcommand of the [`cook` CLI tool](ht
 ## Features
 
 - [x] Display Cooklang recipes
+- [x] Dark mode toggle
 - [ ] Recipe ingredient list and metadata
 - [ ] Recipe scaling
 - [ ] Shopping list generation

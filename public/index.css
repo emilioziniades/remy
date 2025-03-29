@@ -13,6 +13,16 @@
 .inline-quantity {
 }
 
+.nav-icon {
+  width: 30px;
+  height: 30px;
+  transition: all 0.3s ease-in-out;
+}
+
+#shopping-list-icon {
+  background: url("/static/shopping-cart-line.svg");
+}
+
 #dark-mode-toggle {
   background-color: transparent;
   border: none;
@@ -21,29 +31,34 @@
 }
 
 #dark-mode-toggle-icon {
-  background: url("/moon-line.svg");
-  width: 30px;
-  height: 30px;
-  transition: all 0.3s ease-in-out;
+  background: url("/static/moon-line.svg");
 }
 
 @media (prefers-color-scheme: dark) {
-  #dark-mode-toggle-icon {
-    background: url("/sun-line.svg");
+  .nav-icon {
     filter: invert(1);
+  }
+  #dark-mode-toggle-icon {
+    background: url("/static/sun-line.svg");
   }
 }
 
 [data-theme="light"] {
   #dark-mode-toggle-icon {
-    background: url("/moon-line.svg");
+    background: url("/static/moon-line.svg");
+  }
+
+  .nav-icon {
     filter: invert(0);
   }
 }
 
 [data-theme="dark"] {
   #dark-mode-toggle-icon {
-    background: url("/sun-line.svg");
+    background: url("/static/sun-line.svg");
+  }
+
+  .nav-icon {
     filter: invert(1);
   }
 }
