@@ -6,11 +6,13 @@ use askama::Template;
 use axum::{
     Router,
     extract::{FromRef, Path, State},
+    http::StatusCode,
     response::Html,
     routing::get,
 };
 use clap::Parser;
 use templates::RecipeInfo;
+use tower_http::services::ServeDir;
 use walkdir::WalkDir;
 
 #[derive(Parser, Clone)]
@@ -41,9 +43,10 @@ async fn main() {
     let app = Router::new()
         .route("/", get(index))
         .route("/recipe/{recipe_id}", get(recipe))
-        .with_state(state)
         // TODO: the static directory should come from config
-        .fallback_service(tower_http::services::ServeDir::new("public"));
+        .nest_service("/static", ServeDir::new("public"))
+        .with_state(state)
+        .fallback(not_found);
 
     // run it
     let listener = tokio::net::TcpListener::bind("127.0.0.1:3000")
@@ -79,6 +82,13 @@ async fn recipe(Path(recipe_id): Path<String>, State(config): State<Config>) -> 
         }
         .render()
         .unwrap(),
+    )
+}
+
+async fn not_found() -> (StatusCode, Html<String>) {
+    (
+        StatusCode::NOT_FOUND,
+        Html(templates::NotFound().render().unwrap()),
     )
 }
 

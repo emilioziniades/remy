@@ -20,3 +20,7 @@ pub struct Recipe {
     pub name: String,
     pub recipe: cooklang::ScalableRecipe,
 }
+
+#[derive(Template)]
+#[template(path = "404.html", whitespace = "suppress")]
+pub struct NotFound();
